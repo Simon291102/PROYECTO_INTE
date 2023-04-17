@@ -65,11 +65,15 @@ def añadir_contacto():
 
 # Función para borrar un contacto
 def borrar_contacto(i):
-    # Eliminamos el contacto de la lista
-    del CONTACTOS[i]
+    # Preguntamos al usuario si está seguro de eliminar el contacto
+    confirmacion = tk.messagebox.askyesno("Confirmar eliminación", "¿Estás seguro de que deseas eliminar este contacto?")
 
-    # Mostramos los contactos actualizados
-    mostrar_contactos()
+    if confirmacion:
+        # Eliminamos el contacto de la lista
+        del CONTACTOS[i]
+
+        # Mostramos los contactos actualizados
+        mostrar_contactos()
 
 # Función para buscar un contacto
 def buscar_contacto():
