@@ -1,15 +1,25 @@
 from tkinter import Tk, Button, Frame, messagebox, Label, PhotoImage, Entry, END
+PhotoImage, Entry, END
 from tkinter.ttk import Style
 import tkinter as tk
 ventana = tk.Tk()
 ventana.title("BA-X")
 ventana.configure(bg="#273DDC")
+ventana.geometry("700x500")
 
 CONTACTOS = [
     {'nombre': 'Juan Pérez', 'telefono': '4424656219'},
     {'nombre': 'María López', 'telefono': '4423234567'},
     {'nombre': 'Pedro García', 'telefono': '4427890123'}
 ]
+
+def llamar_contactos():
+    for contacto in CONTACTOS:
+        print(contacto['telefono'])
+    messagebox.showinfo('Advertencia', 'Se ha informado a tu contactos')
+    return
+    
+
 
 # Función para mostrar los contactos en la sección 2
 def mostrar_contactos():
@@ -140,6 +150,12 @@ buscar_btn.grid(row=0, column=2, padx=10)
 # Agregamos un borde alrededor de la sección de resultados
 seccion2.config(highlightbackground="#DDDDDD", highlightthickness=1)
 
+#boton llamar
+seccion3 = Frame(ventana, bg="#4859D4", pady=10)
+seccion3.pack(fill="x", padx=20, pady=10)
+
+llamar_btn = Button(seccion3, text="Imprimir contactos", font=("Helvetica", 16), bg="#EFEFEF", fg="#222", bd=0, command=llamar_contactos)
+llamar_btn.pack(padx=10, pady=10)
 # Mostramos los contactos al inicio del programa
 mostrar_contactos()
 
